@@ -53,7 +53,7 @@ $dashboard = new dashboardController();
 }//---runAdmin終了
 
 //***********************************************************************************
-//	ユーザー「1」：ジャーナルスタッフ用画面・機能分岐メソッドrunEditorialOffice
+//	ユーザー「1」：スタッフ用画面・機能分岐メソッドrunJstaff
 //***********************************************************************************
 public function runJstaff(){
 
@@ -107,12 +107,7 @@ public function runJstaff(){
 				$this->screen_JstaffTop();
 	}
 
-}//---runEditorialOffice終了
+}//---runJstaff終了
 
-
-
-
-
-
-}//class BranchControllerの終了
+}//class Dispatcherの終了
 ?>

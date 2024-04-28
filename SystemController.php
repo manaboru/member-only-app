@@ -1,8 +1,6 @@
 <?php
 
 class SystemController extends BaseController {
-
-
 	
 //***************************************************
 //　ユーザーかゲストかの判定
@@ -97,32 +95,6 @@ public function do_authenticate(){
 	}else{
 	$this->auth_error_mess = $this->auth->auth_no();
 	$this->screen_login();
-	}
-}
-
-//***************************************************
-//	パンくずナビ
-//***************************************************
-public function get_pankuzuPath(){
-	if(!$this->type){
-	return;
-	}else{
-		switch($this->type){
-		case 'regist':
-		$name='レコード個別登録';
-		break;
-		case 'bulk_regist':
-		$name='レコード一括登録';
-		break;
-		case 'list':
-		$name='検索結果';
-		break;
-		case 'detail':
-		$name='論文詳細画面';
-		break;
-		}
-//$link =  {$smarty.server.SCRIPT_NAME};
-
 	}
 }
 

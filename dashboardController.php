@@ -9,18 +9,12 @@ class dashboardController extends BaseController{
 //*****************************************************************************
 public function screen_top($role){
 
-//	echo "管理者用のトップページです";
-
 	$system = new SystemModel();
-//	$dashboard = new dashboardController();
-//	$editorialFunction = new EditorialFunctionController();
-//	$uploadedFiles = $editorialFunction->getFileNamesFromFolder();
 
 	//現在受付中のイベント、および、終了済みのイベントを分けて、それぞれの変数に代入する
 	$test_events = $system->getEvents(0);
 	$current_events = $system->getEvents(1);
 	$finished_events = $system->getEvents(2);
-//	$cnt = $system->getNumParticipants($_GET['eid']);
 
 	//$roleに応じたテンプレートを選別する。
 	//違いは、制御タブの有り無し→タグを生成するか否かを変数に込める

@@ -54,10 +54,6 @@ public function screen_login(){
 	$this->next_type='authenticate';
 	$this->file='page.login.tpl';
 
-//	$arr=array('title'=>$this->title,'type'=>$this->next_type);
-//	$view= new view_object();
-//	$view->screen($arr,$this->file);
-
 	$this->view->assign('title', $this->title);
 	$this->view->assign('error_mess', $this->auth_error_mess);
 	$this->view->assign('type', $this->next_type);

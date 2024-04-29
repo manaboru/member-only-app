@@ -20,16 +20,12 @@ public function __construct(){
 
 public function viewList(){
 
-
 	$participants = $this->systemModel->getParticipants($_GET['eid']);
 	$current_events = $this->systemModel->getSingleEvent($_GET['eid']);
 	$cnt = $this->systemModel->getNumParticipants($_GET['eid']);
-//	$cnt_student = $this->systemModel->getNumStudents($_GET['eid']);
-//	$cnt_mixer = $this->systemModel->getNumMixer($_GET['eid']);
 	$draganddrop = TRUE;
 	$this->title = '参加者一覧';
 	$this->file = 'list.participants'.$_SESSION['role'].'.tpl';
-
 
 	$arr=array('title'=>$this->title,'draganddrop'=>$draganddrop, 'participants'=>$participants,'current_events'=>$current_events,'cnt'=>$cnt,'cnt_student'=>$cnt_student,'cnt_mixer'=>$cnt_mixer);
 	$view= new view_object();
@@ -69,6 +65,7 @@ public function formReminder(){
 switch($_GET['status']){
 
 case 'input':
+	//メール内容の入力画面を表示
 	$this->title = 'メール内容入力';
 	$this->file = 'form.input.reminder.tpl';
 	$arr=array('title'=>$this->title,'current_events'=>$current_events);
@@ -77,10 +74,7 @@ case 'input':
 	break;
 
 case 'confirm':
-
-
 	//フォーム入力された値をセッション変数に格納
-	//$_SESSION['reminderTitle']=$_POST['reminderTitle'];
 	$_SESSION['mailBody'] = $_POST['mailBody'];
 	$this->title = 'メール内容確認';
 	$this->file = 'form.confirm.reminder.tpl';
@@ -95,12 +89,10 @@ default:
 	//イベント名称の取得→メールタイトルの構成
 	$mailSubject = "【リマインド】".$current_events['eventName'];
 
-	
 	//繰り返し実行(配列から値を取り出し、Emailの値だけセット)
 	foreach($participants as $value){
 
 		$this->systemModel->sendMail($value['Email'],$mailSubject,$_SESSION['mailBody']);
-
 	}
 	}
 
